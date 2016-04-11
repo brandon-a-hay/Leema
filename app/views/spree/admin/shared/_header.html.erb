@@ -33,7 +33,18 @@
           <% else %>
           <li><%= link_to "Sell", "/sell" %></li>
           <% end %>
-          <li id="nav-shop-link"><%= link_to "Shop", root_path %></li>
+          <!-- Shop link with dropwdown categories -->
+          <li class="dropdown" id="nav-shop-link">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <% categories.each do |cat| %>
+                <li><%= link_to "#{cat.name}", spree.nested_taxons_path(cat.permalink) %></li>
+              <% end %>
+              <li role="separator" class="divider"></li>
+              <li><a href="/store">All Products</a></li>
+            </ul>
+          </li>
+          <!--/Shop link-->
           <li id="link-to-cart" data-hook><%= link_to_cart %></li>
 
           <li class="dropdown">
