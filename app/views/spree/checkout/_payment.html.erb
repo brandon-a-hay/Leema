@@ -38,10 +38,11 @@
       <% @order.available_payment_methods.each do |method| %>
       <li class="list-group-item">
         <label>
-          <%= radio_button_tag "order[payments_attributes][][payment_method_id]", method.id, method == @order.available_payment_methods.first %>
+          <!-- wrap this in a hidden div so we don't see the radio button -->
+          <div class="hidden">
+            <%= radio_button_tag "order[payments_attributes][][payment_method_id]", method.id, method == @order.available_payment_methods.first %>
+          </div>
           <% if method.name == "Stripe" %>
-            <!-- add this back in here when we figure out cloudfront issue -->
-            <!-- link_to image_tag("stripe.png"), "http://www.stripe.com/" -->
             <%= link_to image_tag("stripe.png"), "http://www.stripe.com/" %>
           <% else %>
             <%= Spree.t(method.name, :scope => :payment_methods, :default => method.name) %>
