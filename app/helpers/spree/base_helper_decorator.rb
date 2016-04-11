@@ -52,4 +52,10 @@ Spree::BaseHelper.module_eval do
     crumb_list = content_tag(:ol, raw(crumbs.flatten.map{|li| li.mb_chars}.join), class: 'breadcrumb')
     content_tag(:nav, crumb_list, id: 'breadcrumbs', class: 'col-md-12')
   end
+
+  # fetch the categories from the db to be displayed in the shop dropdown in navbar
+  def categories
+    Spree::Taxonomy.first.taxons.where(depth: 1)
+  end
+  
 end
