@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
   validates :title, presence: true,
                     length: { minimum: 0, maxmimum: 140 }
   validates :price, presence: true
+  validates :package_count, presence: true, length: { minimum: 1 }
   validates :description, presence: true,
                   length: { minimum: 5 }
   has_attached_file :photo, :styles => { :small => "120x120>"}

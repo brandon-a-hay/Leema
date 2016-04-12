@@ -53,6 +53,15 @@
         </div>
       <% end %>
 
+      <%= f.field_container :package_count do %>
+        <div class="form-group">
+          <%= f.label :package_count, Spree.t(:package_count) %> <span class="required">*</span><br />
+          <p class="help-block">How many items are there in a package?</p>
+          <%= f.number_field :package_count %>
+          <%= f.error_message_on :package_count %>
+        </div>
+      <% end %>
+
       <div data-hook="new_product_attrs" class="row">
         <% unless @product.has_variants? %>
           <!-- <div data-hook="new_product_sku" class="alpha col-sm-3">
