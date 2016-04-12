@@ -57,6 +57,13 @@
         <%= f.error_message_on :shipping_information %>
       </div>
     <% end %>
+    <%= f.field_container :package_count do %>
+      <div class="form-group">
+        <%= f.label :package_count, Spree.t(:package_count) %>
+        <%= f.number_field :package_count %>
+        <%= f.error_message_on :package_count %>
+      </div>
+    <% end %>
 
     <div class="checkbox">
       <label>
