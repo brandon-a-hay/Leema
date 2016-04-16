@@ -4,6 +4,7 @@ Spree::Product.class_eval do
   validates :leema_description, presence: true
   validates :ingredients, presence: true
   validates :shipping_information, presence: true
+  validates :package_count, presence: true, length: { minimum: 1 }
 
   after_update :increase_variant_price
 
