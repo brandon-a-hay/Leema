@@ -29,6 +29,15 @@
         </div>
       <% end %>
 
+      <%= f.field_container :package_count do %>
+        <div class="form-group">
+          <%= f.label :package_count, Spree.t(:package_count) %> <span class="required">*</span><br />
+          <p class="help-block">How many items are there in a package?</p>
+          <%= f.number_field :package_count %>
+          <%= f.error_message_on :package_count %>
+        </div>
+      <% end %>
+
       <%= f.field_container :leema_description do %>
         <div class="form-group">
           <%= f.label :leema_description, Spree.t(:product_description) %> <span class="required">*</span>
@@ -50,15 +59,6 @@
           <%= f.label :shipping_information, Spree.t(:shipping_information) %> <span class="required">*</span><br />
           <%= f.text_area :shipping_information, {:rows => "7", :class => 'form-control', :placeholder => 'Please list any important shipping information here. How long does it take you to fill orders? When can customers expect their shipments?'} %>
           <%= f.error_message_on :shipping_information %>
-        </div>
-      <% end %>
-
-      <%= f.field_container :package_count do %>
-        <div class="form-group">
-          <%= f.label :package_count, Spree.t(:package_count) %> <span class="required">*</span><br />
-          <p class="help-block">How many items are there in a package?</p>
-          <%= f.number_field :package_count %>
-          <%= f.error_message_on :package_count %>
         </div>
       <% end %>
 

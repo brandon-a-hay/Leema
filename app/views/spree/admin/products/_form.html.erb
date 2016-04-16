@@ -12,6 +12,15 @@
       <% end %>
     </div>
 
+    <%= f.field_container :package_count do %>
+      <div class="form-group">
+        <%= f.label :package_count, Spree.t(:package_count) %> <span class="required">*</span><br />
+        <p class="help-block">How many items are there in a package?</p>
+        <%= f.number_field :package_count %>
+        <%= f.error_message_on :package_count %>
+      </div>
+    <% end %>
+
     <div data-hook="admin_product_form_slug">
       <%= f.hidden_field :slug do %>
         <%= f.label :slug, raw(Spree.t(:slug) + content_tag(:span, ' *',  :class => "required")) %>
@@ -55,15 +64,6 @@
         <%= f.label :shipping_information, Spree.t(:shipping_information) %>
         <%= f.text_area :shipping_information, {:rows => "7", :class => 'form-control'} %>
         <%= f.error_message_on :shipping_information %>
-      </div>
-    <% end %>
-    
-    <%= f.field_container :package_count do %>
-      <div class="form-group">
-        <%= f.label :package_count, Spree.t(:package_count) %> <span class="required">*</span><br />
-        <p class="help-block">How many items are there in a package?</p>
-        <%= f.number_field :package_count %>
-        <%= f.error_message_on :package_count %>
       </div>
     <% end %>
 
