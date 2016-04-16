@@ -57,9 +57,11 @@
         <%= f.error_message_on :shipping_information %>
       </div>
     <% end %>
+    
     <%= f.field_container :package_count do %>
       <div class="form-group">
-        <%= f.label :package_count, Spree.t(:package_count) %>
+        <%= f.label :package_count, Spree.t(:package_count) %> <span class="required">*</span><br />
+        <p class="help-block">How many items are there in a package?</p>
         <%= f.number_field :package_count %>
         <%= f.error_message_on :package_count %>
       </div>
