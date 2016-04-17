@@ -357,6 +357,17 @@ section {
             text-shadow: 1px 1px 7px #000;
         }
     }
+
+    .welcome-link-div {
+        text-align: left;
+        width: 50%
+    }
+
+    .btn-welcome-link {
+        background-color: #444444;
+        font-size: 19px;
+        margin-right: 10px;
+    }
 }
 
 @media only screen and (max-width: 767px){
@@ -375,6 +386,11 @@ section {
                 margin-bottom: 15px;
             }
         }
+
+        .btn-welcome-link {
+            font-size: 11px;
+            margin-right: 7px;
+        }
     }
 }
 
@@ -391,6 +407,11 @@ section {
                 font-size: 20px;
                 margin-bottom: 15px;
             }
+        }
+
+        .btn-welcome-link {
+            font-size: 14px;
+            margin-right: 9px;
         }
     }
 }

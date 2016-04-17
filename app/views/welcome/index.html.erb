@@ -7,11 +7,14 @@
 			<div class="welcome-info">
 				<h1>Let Everyone Eat My Art</h1>
 				<p>Handcrafted, unique treats delivered direct to your doorstep.</p>
+				<div class="welcome-link-div">
+					<%= link_to "Our Story", 'store/products/', class: "btn btn-primary btn-welcome-link" %>
+					<%= link_to "Our Promise", 'store/products/', class: "btn btn-primary btn-welcome-link" %>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 <section id="welcome-product-grid">
 	<div class="container">
 		<div class="row">
@@ -42,6 +45,7 @@
 	                  <% if product.suppliers.first.store_logo_file_name? %>
 			                <%= image_tag product.suppliers.first.store_logo(:default), :class => 'seller-logo-mini' %>
 			              <% end %>
+			              <%= link_to "Buy Now", 'store/products/' + product.slug, class: "btn btn-primary" %>
 									</div><!-- close .product-info -->
 								</div><!-- close .product-card -->
 							<% end %>

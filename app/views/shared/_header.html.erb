@@ -27,9 +27,8 @@
         <% end %>
 
         <% if signed_in? %>
-          <% if current_user.supplier? %>
-          <% else %>
-          <li><%= link_to "Sell", "/sell" %></li>
+          <% if !current_user.supplier? %>
+            <li><%= link_to "Sell", "/sell" %></li>
           <% end %>
 
           <!-- Shop link with dropwdown categories -->
@@ -109,3 +108,22 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<!-- Our guarantee modal -->
+<div class="modal fade" id="guaranteeModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">The Leema Guarantee</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Buy from us with confidence</h4>
+        <p class="lead">We strive to offer the highest quality, small-batch artisanal products sold by a carefully curated number of reputable sellers. If you are not completely satisfied with your purchase, <i><strong>we will issue you a full refund within 30 days of your purchase.</i></strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Sweet! <i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
