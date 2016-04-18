@@ -52,3 +52,11 @@ test:
   username: bhay
   password:
   timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: leema_prod
+  pool: 5
+  username: bhay
+  timeout: 5000
