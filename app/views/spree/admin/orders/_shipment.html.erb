@@ -137,7 +137,7 @@
           <% if shipment.tracking.present? %>
             <strong><%= Spree.t(:tracking_code) %>:</strong> <%= shipment.tracking %>
           <% elsif shipment.selected_shipping_rate.name == "Personal Delivery" %>
-            You have confirmed that you will deliver your product on <%= shipment.delivery_date %>.
+            You have confirmed that you will deliver your product on <%= shipment.delivery_date.strftime("%A %B %e") %>.
           <% else %>
             Congratulations on your order! When you're ready to ship this delcious product click "Ship" and we will update this with a tracking code and shipping label.
           <% end %>
