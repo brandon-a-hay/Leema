@@ -46,22 +46,3 @@
     </div>
   </div>
 </div>
-<% if @previous_address %>
-  <script>
-  $(document).ready(function () {
-    $("#prior-address").click(function() {
-      if ($("#prior-address").prop('checked') == true) {
-        $("#order_bill_address_attributes_firstname").val("<%=@previous_address.firstname %>");
-        $("#order_bill_address_attributes_lastname").val("<%=@previous_address.lastname %>");
-        $("#order_bill_address_attributes_address1").val("<%=@previous_address.address1 %>");
-        $("#order_bill_address_attributes_address2").val("<%=@previous_address.address2 %>");
-        $("#order_bill_address_attributes_city").val("<%=@previous_address.city %>");
-        $("#order_bill_address_attributes_state").val("<%=@previous_address.state_id %>");
-        $("#order_bill_address_attributes_country").val("<%=@previous_address.country_id %>");
-        $("#order_bill_address_attributes_zipcode").val("<%=@previous_address.zipcode %>");
-        $("#order_bill_address_attributes_phone").val("<%=@previous_address.phone %>");
-      };
-    });
-  });
-  </script>
-<% end %>
