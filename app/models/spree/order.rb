@@ -65,8 +65,9 @@ module Spree
     before_validation :set_currency
     before_validation :generate_order_number, on: :create
     before_validation :clone_billing_address, if: :use_billing?
+    before_validation :clone_shipping_address, if: :use_shipping?
     attr_accessor :use_billing
-
+    attr_accessor :use_shipping
 
     before_create :create_token
     before_create :link_by_email
@@ -225,6 +226,15 @@ module Spree
         self.ship_address = bill_address.clone
       else
         self.ship_address.attributes = bill_address.attributes.except('id', 'updated_at', 'created_at')
+      end
+      true
+    end
+
+    def clone_shipping_address
+      if ship_address and self.bill_address.nil?
+        self.bill_address = ship_address.clone
+      else
+        self.bill_address.attributes = ship_address.attributes.except('id', 'updated_at', 'created_at')
       end
       true
     end
@@ -654,6 +664,10 @@ module Spree
 
       def use_billing?
         @use_billing == true || @use_billing == 'true' || @use_billing == '1'
+      end
+
+      def use_shipping?
+        @use_shipping == true || @use_shipping == 'true' || @use_shipping == '1'
       end
 
       def set_currency
