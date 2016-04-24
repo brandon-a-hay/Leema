@@ -48,3 +48,6 @@ Spree.user_class = "User"
           Rails.application.config.to_prepare do
             require_dependency 'spree/authentication_helpers'
           end
+
+Spree::PermittedAttributes.checkout_attributes << :use_shipping
+Spree::PermittedAttributes.shipment_attributes << :delivery_date
