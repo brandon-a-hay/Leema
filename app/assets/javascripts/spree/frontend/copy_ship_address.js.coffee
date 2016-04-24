@@ -63,7 +63,7 @@ Spree.ready ($) ->
         Spree.updateState 's'
 
       Spree.updateState 's'
-
+      brandon_hay = 'brandon_hay'
       order_use_shipping = ($ 'input#order_use_shipping')
       order_use_shipping.change ->
         update_billing_form_state order_use_shipping

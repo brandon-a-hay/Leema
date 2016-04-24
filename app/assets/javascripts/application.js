@@ -20,4 +20,5 @@
 //= stub profiles
 //= stub my_orders
 //= stub welcome
+//= require spree/frontend/copy_ship_address
 
