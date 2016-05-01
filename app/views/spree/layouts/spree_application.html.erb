@@ -33,29 +33,21 @@
     <%= render :partial => 'spree/shared/header' %>
     <div class="row-offcanvas row-offcanvas-right">
       <%= render :partial => 'shared/announcement' %>
-      <div class="flash-msg">
-        <%= flash_messages %>
-      </div>
+
       <div class="container">
-
-        <div id="wrapper" data-hook>
-
+        <div class="row" data-hook>
           <%-# breadcrumbs(@taxon) -%>
 
 
           <%= render :partial => 'spree/shared/sidebar' if content_for? :sidebar %>
 
+          <div id="content" class="<%= !content_for?(:sidebar) ? "col-sm-12" : "col-sm-8 col-md-9" %>" data-hook>
+            <%= flash_messages %>
+            <%= yield %>
+          </div>
 
-          <div class="row">
-              <div id="content" class="col-xs-12" data-hook>
-                <%= yield %>
-              </div>
-
-            <%= yield :templates %>
-
-          </div><!-- close .row -->
-        </div><!-- close #wrapper -->
-
+          <%= yield :templates %>
+        </div><!-- close .row -->
       </div><!-- close .container -->
 
       <%= render :partial => 'shared/footer' %>
