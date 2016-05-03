@@ -381,6 +381,15 @@ nav#taxonomies {
     }
   }
 }
+@media (min-width: 992px) {
+
+  .sidebar-item.affix {
+    top: 25px;
+    min-width: 165px;
+  }
+  
+}
+
 
 /*--------------------------------------*/
 /* Flash notices & errors
