@@ -1,6 +1,6 @@
 <% max_level = Spree::Config[:max_level_in_taxons_menu] || 1 %>
 <% if @taxonomies.count > 0 %>
-	<nav id="taxonomies" class="hidden-xs hidden-sm sidebar-item nav nav-pills" data-hook data-spy="affix" data-offset-top="100" data-offset-bottom="">
+	<nav id="taxonomies" class="sidebar-item nav nav-pills">
 	  <% @taxonomies.each do |taxonomy| %>
 	    <% cache [I18n.locale, taxonomy, max_level] do %>
 	    	<h4 class='taxonomy-root'><%= Spree.t(:shop_by_taxonomy, :taxonomy => taxonomy.name) %></h4>
