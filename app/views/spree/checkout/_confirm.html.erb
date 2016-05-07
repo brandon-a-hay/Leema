@@ -53,22 +53,3 @@
   <%= submit_tag Spree.t(:place_order), :class => 'btn btn-lg btn-success' %>
   <script>Spree.disableSaveOnClick();</script>
 </div>
-
-<!-- BEGIN: Google Trusted Stores -->
-<script type="text/javascript">
-  var gts = gts || [];
-
-  gts.push(["id", "712102"]);
-  gts.push(["badge_position", "BOTTOM_LEFT"]);
-  gts.push(["locale", "en_US"]);
-
-  (function() {
-    var gts = document.createElement("script");
-    gts.type = "text/javascript";
-    gts.async = true;
-    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(gts, s);
-  })();
-</script>
-<!-- END: Google Trusted Stores -->
