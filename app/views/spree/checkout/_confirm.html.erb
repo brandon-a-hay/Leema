@@ -7,6 +7,41 @@
   </div>
 </div>
 
+<!-- START Google Trusted Stores Order -->
+<div id="gts-order" style="display:none;" translate="no">
+
+  <!-- start order and merchant information -->
+  <span id="gts-o-id"><%= @order.id %></span>
+  <span id="gts-o-email"><%= @order.email %></span>
+  <span id="gts-o-country"><%= @order.billing_address.country.iso %></span>
+  <span id="gts-o-currency"><%= @order.currency %></span>
+  <span id="gts-o-total"><%= @order.total.to_f %></span>
+  <span id="gts-o-discounts"><%= @order.adjustment_total.to_f %></span>
+  <span id="gts-o-shipping-total"><%= @order.shipment_total.to_f %></span>
+  <span id="gts-o-tax-total"><%= @order.included_tax_total.to_f + @order.additional_tax_total.to_f %></span>
+  <span id="gts-o-est-ship-date"><%= (Time.now + 5.day).strftime("%Y-%m-%d") %></span>
+  <span id="gts-o-est-delivery-date"><%= (Time.now + 10.day).strftime("%Y-%m-%d") %></span>
+  <span id="gts-o-has-preorder">N</span>
+  <span id="gts-o-has-digital">N</span>
+  <!-- end order and merchant information -->
+
+  <!-- start repeated item specific information -->
+  <!-- item example: this area repeated for each item in the order -->
+  <% @order.line_items.each do |item| %>
+    <span class="gts-item">
+      <span class="gts-i-name"><%= item.product.name %></span>
+      <span class="gts-i-price"><%= item.price.to_f %></span>
+      <span class="gts-i-quantity"><%= item.quantity %></span>
+      <span class="gts-i-prodsearch-id">ITEM_GOOGLE_SHOPPING_ID</span>
+      <span class="gts-i-prodsearch-store-id">ITEM_GOOGLE_SHOPPING_ACCOUNT_ID</span>
+    </span>
+  <% end %>
+  <!-- end item 1 example -->
+  <!-- end repeated item specific information -->
+
+</div>
+<!-- END Google Trusted Stores Order -->
+
 <div class="well text-center form-buttons" data-hook="buttons">
 	<% if signed_in? %>
 
