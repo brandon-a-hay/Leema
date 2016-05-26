@@ -10,6 +10,14 @@ Spree::Product.class_eval do
 
   def self.search(search)
     if search
+      # if user clicks on a drop down suggestion take them direct to the page
+      puts "search = #{search}"
+      @product_match = self.where(name: search).first
+      return @product_match if @product_match
+
+      @supplier_match = self.joins(:suppliers).where(store_name: search).first
+      return @supplier_match if @supplier_match
+
       @supplier_search = self.joins(:suppliers).where('store_name LIKE ?', "%#{search}%")
       @product_search = self.where(['name LIKE ? OR leema_description LIKE ?', "%#{search}%", "%#{search}%"])
       if @supplier_search.count > 0
