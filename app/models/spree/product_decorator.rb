@@ -15,7 +15,7 @@ Spree::Product.class_eval do
       @product_match = self.where(name: search).first
       return @product_match if @product_match
 
-      @supplier_match = self.joins(:suppliers).where(store_name: search).first
+      @supplier_match = Spree::Supplier.where(store_name: search).first
       return @supplier_match if @supplier_match
 
       @supplier_search = self.joins(:suppliers).where('store_name LIKE ?', "%#{search}%")
