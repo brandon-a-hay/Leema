@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   get '/sell' => 'sell#index'
+  
+  get '/ourstory' => 'our_story#index'
 
   get '/:id', to: 'profiles#show', as: :profile
 
