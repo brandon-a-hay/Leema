@@ -20,6 +20,7 @@ Rails.application.config.assets.precompile += [
   'global.js',
   'my_orders.js',
   'my_orders.css',
+  'ourstory.css',
   'owl.carousel.min.js',
   'products.css',
   'profiles.css',
