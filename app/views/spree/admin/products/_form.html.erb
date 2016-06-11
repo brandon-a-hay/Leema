@@ -1,6 +1,16 @@
 <div data-hook="admin_product_form_fields">
 
   <div class="col-sm-8" data-hook="admin_product_form_left">
+    <% if spree_current_user.leema_admin? %>
+      <div data-hook="admin_product_hidden">
+        <%= f.field_container :hidden do %>
+          <div class="form-group">
+            <%= f.label :hidden, raw(Spree.t(:hidden)) %>
+            <%= f.check_box :hidden, :class => 'form-control' %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
     <div data-hook="admin_product_form_name">
       <%= f.field_container :name do %>
