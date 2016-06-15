@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611231732) do
+ActiveRecord::Schema.define(version: 20160615013230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -895,6 +895,7 @@ ActiveRecord::Schema.define(version: 20160611231732) do
     t.text     "announcement"
     t.string   "abbreviated_location"
     t.integer  "minimum_days_notice",                              default: 0
+    t.string   "yelp_id"
   end
 
   add_index "spree_suppliers", ["active"], name: "index_spree_suppliers_on_active", using: :btree
