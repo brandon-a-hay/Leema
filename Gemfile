@@ -14,9 +14,13 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+
 group :development do
   # gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
   gem 'rb-fsevent', '>= 0.9.1'
+  gem "rails_best_practices"
+  gem 'xray-rails'
+  gem 'byebug'
 end
 
 # testing
@@ -44,13 +48,6 @@ gem 'omniauth-facebook'
 # Used as currency fields
 gem 'money-rails'
 gem 'cancancan', '~> 1.9'
-
-group :development do
-  gem 'xray-rails'
-end
-
-# Debugging
-gem 'byebug', group: :development
 
 # New Relic for server monitoring
 gem 'newrelic_rpm'
@@ -83,3 +80,6 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'geokit-rails' # for checking if a point is within bounding box
+
+# yelp reviews
+gem 'yelp', require: 'yelp'
