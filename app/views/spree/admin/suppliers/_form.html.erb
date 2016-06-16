@@ -70,6 +70,15 @@
           <% end %>
         </div>
 
+        <div class="form-group">
+          <%= form.field_container :yelp_id do %>
+            <%= form.label :yelp_id, "Yelp ID" %>
+            <%= image_tag "yelp_powered_btn_red.png", class: "img-responsive" %>
+            <p class="help-block">If you have a Yelp business page, enter your Yelp Id here. This will link your Yelp customer reviewers to your Leema account. e.g. http://yelp.com/biz/<strong>my-yelp-id</strong></p>
+            <%= form.text_field :yelp_id, class: 'form-control', placeholder: "my-yelp-id" %>
+          <% end %>
+        </div>
+
         <% if spree_current_user.leema_admin? == true %>
           <%= form.label :abbreviated_location %>
           <%= form.text_field :abbreviated_location %>
