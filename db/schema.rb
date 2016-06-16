@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412023557) do
+ActiveRecord::Schema.define(version: 20160615013230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -444,7 +444,7 @@ ActiveRecord::Schema.define(version: 20160412023557) do
   add_index "spree_product_properties", ["property_id"], name: "index_spree_product_properties_on_property_id", using: :btree
 
   create_table "spree_products", force: true do |t|
-    t.string   "name",                                             default: "",  null: false
+    t.string   "name",                                             default: "",    null: false
     t.text     "description"
     t.datetime "available_on"
     t.datetime "deleted_at"
@@ -455,8 +455,8 @@ ActiveRecord::Schema.define(version: 20160412023557) do
     t.integer  "shipping_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "avg_rating",               precision: 7, scale: 5, default: 0.0, null: false
-    t.integer  "reviews_count",                                    default: 0,   null: false
+    t.decimal  "avg_rating",               precision: 7, scale: 5, default: 0.0,   null: false
+    t.integer  "reviews_count",                                    default: 0,     null: false
     t.integer  "user_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -476,6 +476,7 @@ ActiveRecord::Schema.define(version: 20160412023557) do
     t.decimal  "delivery_fee"
     t.integer  "shipping_included",                                default: 0
     t.integer  "package_count"
+    t.boolean  "hidden",                                           default: false
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
@@ -894,6 +895,7 @@ ActiveRecord::Schema.define(version: 20160412023557) do
     t.text     "announcement"
     t.string   "abbreviated_location"
     t.integer  "minimum_days_notice",                              default: 0
+    t.string   "yelp_id"
   end
 
   add_index "spree_suppliers", ["active"], name: "index_spree_suppliers_on_active", using: :btree
