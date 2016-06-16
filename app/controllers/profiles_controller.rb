@@ -9,16 +9,10 @@ class ProfilesController < ApplicationController
       @orders = @user.spree_orders.all
       if @user.supplier?
         @products = Spree::Product.joins(:suppliers).where('supplier_id = ?', @supplier.id)
-      # else
-      #   @products = nil
-      end
-      render action: :show
-      @supplier = @user.supplier
-      @orders = @user.spree_orders.all
-      if @user.supplier?
-        @products = Spree::Product.joins(:suppliers).where('supplier_id = ?', @supplier.id)
-      # else
-      #   @products = nil
+        # yelp integration
+        if !@supplier.yelp_id.nil?
+          @yelp = Yelp.client.business(@supplier.yelp_id).business
+        end
       end
     else
       render file: 'public/404', status: 404, layout: false
