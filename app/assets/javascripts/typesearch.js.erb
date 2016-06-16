@@ -48,7 +48,7 @@ $(document).ready(function(){
       source: products,
       templates: {
         header: '<h4 class="product-names">Products</h3>'
-      }
+      } 
     },
     {
       name: 'sellers',
@@ -56,6 +56,9 @@ $(document).ready(function(){
       templates: {
         header: '<h4 class="seller-names">Stores</h3>'
       }
+    })
+    .on('typeahead:selected', function(e){
+      e.target.form.submit();
     });
 });
 

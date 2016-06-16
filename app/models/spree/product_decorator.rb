@@ -10,15 +10,22 @@ Spree::Product.class_eval do
 
   def self.search(search)
     if search
-      @supplier_search = self.joins(:suppliers).where('store_name LIKE ?', "%#{search}%")
-      @product_search = self.where(['name LIKE ? OR leema_description LIKE ?', "%#{search}%", "%#{search}%"])
+      # if user clicks on a drop down suggestion take them direct to the page
+      @product_match = self.where(name: search).first
+      return @product_match if @product_match
+
+      @supplier_match = Spree::Supplier.where(store_name: search).first
+      return @supplier_match if @supplier_match
+
+      @supplier_search = self.joins(:suppliers).where('hidden = false AND store_name LIKE ?', "%#{search}%")
+      @product_search = self.where(['hidden = false AND name LIKE ? OR leema_description LIKE ?', "%#{search}%", "%#{search}%"])
       if @supplier_search.count > 0
         @supplier_search
       elsif @product_search.count > 0
         @product_search
       end
     else
-      @products = Spree::Product.all
+      @products = self.where(hidden: false)
     end
   end
 
@@ -38,6 +45,13 @@ Spree::Product.class_eval do
         # handle this so the app doesnt bomb out
         puts 'no variant found... woops!'
       end
+    end
+  end
+
+  def replace_supplier(supplier)
+    variants_including_master.each do |variant|
+      variant.suppliers[0] = supplier
+      supplier.stock_locations.each { |location| location.propagate_variant(variant) }
     end
   end
 

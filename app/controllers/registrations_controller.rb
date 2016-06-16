@@ -2,12 +2,11 @@ class RegistrationsController < Devise::RegistrationsController
   respond_to :html, :json
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def update
     @user = User.find(current_user.id)
-
     successfully_updated = if needs_password?(@user, params)
       @user.update_with_password(devise_parameter_sanitizer.sanitize(:account_update))
     else
