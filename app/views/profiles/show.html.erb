@@ -80,10 +80,10 @@
 
     </div><!-- close .row -->
 
+    <% if @yelp %>
     <!-- Yelp -->
-    <div class="row">
-      <!-- Yelp rating-->
-      <% if @yelp %>
+      <div class="row">
+        <!-- Yelp rating-->
         <div class="yelp-rating col-md-12 col-lg-8">
           <%= image_tag @yelp.rating_img_url_large %> 
           <%= @yelp.review_count %> reviews on <%= image_tag "yelp-logo-medium.png", class: 'yelp-reviews-count-logo' %>
@@ -105,11 +105,11 @@
             </div>
           </div>
         <% end %>
-      <% end %><!-- close Yelp rating -->
-    </div>
-    <div class="row yelp-reviews-button">
-      <%= link_to image_tag("yelp_review_btn_light.png"), @yelp.url, :target => "_blank" %>
-    </div><!-- close Yelp review -->
+      </div>
+      <div class="row yelp-reviews-button">
+        <%= link_to image_tag("yelp_review_btn_light.png"), @yelp.url, :target => "_blank" %>
+      </div><!-- close Yelp review -->
+    <% end %><!-- close Yelp rating -->
 
   </div><!-- close .container -->
 
