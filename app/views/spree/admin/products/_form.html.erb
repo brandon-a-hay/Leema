@@ -300,12 +300,6 @@
       <% end %>
     </div>
 
-    <% if spree_current_user.leema_admin? %>
-      <%= f.field_container :supplier do %>
-        <%= f.label :supplier %><br/>        
-        <%= select_tag(:supplier, options_for_select(@suppliers.map{ |s| [s.store_name] })) %>
-      <% end %>
-    <% end %>
   </div>
 
   <div class="clear"></div>

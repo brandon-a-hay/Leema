@@ -48,11 +48,4 @@ Spree::Product.class_eval do
     end
   end
 
-  def replace_supplier(supplier)
-    variants_including_master.each do |variant|
-      variant.suppliers[0] = supplier
-      supplier.stock_locations.each { |location| location.propagate_variant(variant) }
-    end
-  end
-
 end
