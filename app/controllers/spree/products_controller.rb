@@ -19,7 +19,9 @@ module Spree
       @product_properties = @product.product_properties.includes(:property)
       @taxon = Spree::Taxon.find(params[:taxon_id]) if params[:taxon_id]
       @supplier = @product.suppliers.first
-      puts "supplier vacation #{@supplier.vacation_mode}"
+      if !@supplier.yelp_id.nil?
+        @yelp = Yelp.client.business(@supplier.yelp_id).business
+      end
     end
 
     private

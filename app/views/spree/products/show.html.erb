@@ -23,6 +23,14 @@
           <% if @product.suppliers.first.users.first.state? && @product.suppliers.first.users.first.city? %>
           <p class="seller-location"><i class="fa fa-map-marker"></i> <%= @product.suppliers.first.users.first.city %>, <%= @product.suppliers.first.users.first.state %></p>
           <% end %>
+          <!-- Yelp -->
+          <% if @yelp %>
+            <div class="yelp-rating">
+              <%= image_tag @yelp.rating_img_url_large %> 
+              <%= @yelp.review_count %> reviews on <%= image_tag "yelp-logo-medium.png", class: 'yelp-reviews-count-logo' %>
+            </div>
+          <% end %>
+          <!-- close Yelp -->
           <%= link_to "Our Story", main_app.profile_path(@product.suppliers.first.users.first), class: "btn btn-primary" %>
         </div>
     </div>
