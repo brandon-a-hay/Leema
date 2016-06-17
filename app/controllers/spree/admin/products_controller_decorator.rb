@@ -1,6 +1,5 @@
 Spree::Admin::ProductsController.class_eval do
-  before_filter :get_suppliers, only: [:edit, :update, :new]
-  before_filter :replace_supplier, only: :update
+  before_filter :get_suppliers, only: [:edit, :update]
   before_filter :supplier_collection, only: [:index]
 
   # added the code for this within the new create method
@@ -24,12 +23,7 @@ Spree::Admin::ProductsController.class_eval do
       end
       if try_spree_current_user && try_spree_current_user.supplier?
         print "associating with current user..."
-        @associated_supplier_id = try_spree_current_user.supplier_id
-        if params[:supplier]
-          print "associating with #{params[:supplier]}" 
-          @associated_supplier_id = Spree::Supplier.find_by_store_name(params[:supplier]).id
-        end
-        @product.add_supplier!(@associated_supplier_id)
+        @product.add_supplier!(try_spree_current_user.supplier_id)
       end
     else
       invoke_callbacks(:create, :fails)
@@ -74,13 +68,6 @@ Spree::Admin::ProductsController.class_eval do
   def supplier_collection
     if try_spree_current_user && !try_spree_current_user.admin? && try_spree_current_user.supplier?
       @collection = @collection.joins(:suppliers).where('spree_suppliers.id = ?', try_spree_current_user.supplier_id)
-    end
-  end
-
-  def replace_supplier
-    if params[:supplier] != @product.suppliers.first.store_name
-      @new_supplier = Spree::Supplier.find_by_store_name(params[:supplier])
-      @product.replace_supplier(@new_supplier)
     end
   end
 

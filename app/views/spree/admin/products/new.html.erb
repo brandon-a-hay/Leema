@@ -21,14 +21,6 @@
 
       <legend align="center"><%= Spree.t(:new_product) %></legend>
 
-      <% if spree_current_user.leema_admin? %>
-      If you are seeing this, then you are a Leema admin :) Lucky you!
-        <%= f.field_container :supplier do %>
-          <%= f.label :supplier %><br/>        
-          <%= select_tag(:supplier, options_for_select(@suppliers.map{ |s| [s.store_name] })) %>
-        <% end %>
-      <% end %>
-
       <%= f.field_container :name do %>
         <div class="form-group">
           <%= f.label :name, Spree.t(:product_name) %> <span class="required">*</span>
