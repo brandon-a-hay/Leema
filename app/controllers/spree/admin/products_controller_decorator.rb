@@ -1,5 +1,5 @@
 Spree::Admin::ProductsController.class_eval do
-  before_filter :get_suppliers, only: [:edit, :update]
+  before_filter :get_suppliers, only: [:edit, :update, :new]
   before_filter :replace_supplier, only: :update
   before_filter :supplier_collection, only: [:index]
 
@@ -23,8 +23,13 @@ Spree::Admin::ProductsController.class_eval do
         format.js   { render :layout => false }
       end
       if try_spree_current_user && try_spree_current_user.supplier?
-        print "associating with supplier..."
-        @product.add_supplier!(try_spree_current_user.supplier_id)
+        print "associating with current user..."
+        @associated_supplier_id = try_spree_current_user.supplier_id
+        if params[:supplier]
+          print "associating with #{params[:supplier]}" 
+          @associated_supplier_id = Spree::Supplier.find_by_store_name(params[:supplier]).id
+        end
+        @product.add_supplier!(@associated_supplier_id)
       end
     else
       invoke_callbacks(:create, :fails)
