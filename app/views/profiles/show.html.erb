@@ -88,27 +88,7 @@
           <%= image_tag @yelp.rating_img_url_large %> 
           <%= @yelp.review_count %> reviews on <%= image_tag "yelp-logo-medium.png", class: 'yelp-reviews-count-logo' %>
         </div>
-
-        <% @yelp.reviews.each do |r| %>
-          <div class="yelp-review col-md-8 col-sm-12">
-            <div class="yelp-review-sidebar">
-              <div class="yelp-media-block">
-                <div class="yelp-avatar">
-                  <%= image_tag r.user["image_url"], class: 'yelp-reviewer-img' %>
-                </div>
-              </div>
-            </div>
-            <div class="yelp-review-wrapper">
-              <span class="yelp-user-name"><%= r.user["name"] %></span><br>
-              <%= image_tag r.rating_image_large_url, class: 'yelp-review-stars' %><br>
-              <%= r.excerpt %> <%= link_to "Read more", @yelp.url, :target => "_blank" %></a>
-            </div>
-          </div>
-        <% end %>
       </div>
-      <div class="row yelp-reviews-button">
-        <%= link_to image_tag("yelp_review_btn_light.png"), @yelp.url, :target => "_blank" %>
-      </div><!-- close Yelp review -->
     <% end %><!-- close Yelp rating -->
 
   </div><!-- close .container -->
@@ -124,6 +104,8 @@
             <h3><%= @user.full_name %>'s Products</h3>
           <% end %>
         </div>
+
+        <!-- Products -->
         <% if @products.count > 0 %>
           <div id="products" class="row">
             <% @products.each do |product| %>
@@ -148,6 +130,38 @@
           </div><!-- close #products.row -->
         <% else %>
           <p>No products added yet.</p>
+        <% end %><!-- close products -->
+
+        <!-- Yelp Reviews-->
+        <% if @yelp %>
+        <div class="row" id="yelp-review-row">
+          <div class="page-header">
+            <% if @user.supplier.store_name != nil %>
+              <h3><%= @user.supplier.store_name %> Reviews</h3>
+            <% else %>
+              <h3><%= @user.full_name %> Reviews</h3>
+            <% end %>
+          </div>
+          <% @yelp.reviews.each do |r| %>
+            <div class="yelp-review col-md-8 col-sm-12">
+              <div class="yelp-review-sidebar">
+                <div class="yelp-media-block">
+                  <div class="yelp-avatar">
+                    <%= image_tag r.user["image_url"], class: 'yelp-reviewer-img' %>
+                  </div>
+                </div>
+              </div>
+              <div class="yelp-review-wrapper">
+                <span class="yelp-user-name"><%= r.user["name"] %></span><br>
+                <%= image_tag r.rating_image_large_url, class: 'yelp-review-stars' %><br>
+                <%= r.excerpt %> <%= link_to "Read more", @yelp.url, :target => "_blank" %></a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="row yelp-reviews-button">
+          <%= link_to image_tag("yelp_review_btn_light.png"), @yelp.url, :target => "_blank" %>
+        </div><!-- close Yelp review -->
         <% end %>
       </div><!-- close .col-xs-12 -->
     </div><!-- close .row -->
