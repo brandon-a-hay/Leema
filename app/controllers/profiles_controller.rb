@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
       if @user.supplier?
         @products = Spree::Product.joins(:suppliers).where('supplier_id = ?', @supplier.id)
         # yelp integration
-        if !@supplier.yelp_id.nil?
+        if !@supplier.yelp_id.nil? && !@supplier.yelp_id.blank?
           @yelp = Yelp.client.business(@supplier.yelp_id).business
         end
       end
