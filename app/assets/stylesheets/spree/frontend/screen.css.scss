@@ -440,10 +440,27 @@ nav#taxonomies {
 .yelp-rating {
   padding-left: 0px;
   padding-right: 0px;
+  margin-top: -5px;
 }
+
+.yelp-rating-img {
+  max-width: 120px;
+  padding-bottom: 5px;
+}
+
+@media (max-width: 425px) {
+  .yelp-rating-img {
+    max-width: 100px;
+    display: block;
+  }
+  .yelp-reviews-count-logo {
+    max-width: 50px;
+  }
+} 
 
 .yelp-reviews-count-logo {
   margin-top: -10px;
+  max-width: 61px;
 }
 
 .btn-favorite {

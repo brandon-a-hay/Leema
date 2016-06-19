@@ -26,8 +26,8 @@
           <!-- Yelp -->
           <% if @yelp %>
             <div class="yelp-rating">
-              <%= image_tag @yelp.rating_img_url_large %> 
-              <%= @yelp.review_count %> reviews on <%= image_tag "yelp-logo-medium.png", class: 'yelp-reviews-count-logo' %>
+              <%= image_tag @yelp.rating_img_url_large, class: 'yelp-rating-img' %> 
+              <%= @yelp.review_count %> reviews on <%= link_to image_tag("yelp-logo-medium.png", class: 'yelp-reviews-count-logo'), @yelp.url %>
             </div>
           <% end %>
           <!-- close Yelp -->
