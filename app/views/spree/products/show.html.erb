@@ -139,6 +139,9 @@
               <!-- Tab panes -->
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="shipping-info">
+                  <% if @product.suppliers.first.shipping_image %>
+                    <%= image_tag @product.suppliers.first.shipping_image %>
+                  <% end %>
                   <p><%= @product.shipping_information %></p>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="ingredients">

@@ -94,6 +94,10 @@
             <%= form.label :commission_percentage %><br/>
             <%= form.text_field :commission_percentage, :class => 'form-control' %>
           <% end %>
+          <%= form.field_container :shipping_image do %>
+            <%= form.label :shipping_image %><br/>
+            <%= form.file_field :shipping_image %>
+          <% end %>
         <% end %>
 
 
