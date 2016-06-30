@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630151215) do
+ActiveRecord::Schema.define(version: 20160615013230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -865,10 +865,10 @@ ActiveRecord::Schema.define(version: 20160630151215) do
   add_index "spree_supplier_variants", ["variant_id"], name: "index_spree_supplier_variants_on_variant_id", using: :btree
 
   create_table "spree_suppliers", force: true do |t|
-    t.boolean  "active",                                              default: false, null: false
+    t.boolean  "active",                                           default: false, null: false
     t.integer  "address_id"
-    t.decimal  "commission_flat_rate",        precision: 8, scale: 2, default: 0.0,   null: false
-    t.float    "commission_percentage",                               default: 0.0,   null: false
+    t.decimal  "commission_flat_rate",     precision: 8, scale: 2, default: 0.0,   null: false
+    t.float    "commission_percentage",                            default: 0.0,   null: false
     t.string   "email"
     t.string   "name"
     t.string   "url"
@@ -887,19 +887,15 @@ ActiveRecord::Schema.define(version: 20160630151215) do
     t.string   "store_logo_content_type"
     t.integer  "store_logo_file_size"
     t.datetime "store_logo_updated_at"
-    t.integer  "allow_pickup",                                        default: 0
-    t.integer  "vacation_mode",                                       default: 0
+    t.integer  "allow_pickup",                                     default: 0
+    t.integer  "vacation_mode",                                    default: 0
     t.date     "return_date"
     t.decimal  "delivery_fee"
     t.text     "delivery_area"
     t.text     "announcement"
     t.string   "abbreviated_location"
-    t.integer  "minimum_days_notice",                                 default: 0
+    t.integer  "minimum_days_notice",                              default: 0
     t.string   "yelp_id"
-    t.string   "shipping_image_file_name"
-    t.string   "shipping_image_content_type"
-    t.integer  "shipping_image_file_size"
-    t.datetime "shipping_image_updated_at"
   end
 
   add_index "spree_suppliers", ["active"], name: "index_spree_suppliers_on_active", using: :btree
