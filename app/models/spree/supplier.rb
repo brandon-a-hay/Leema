@@ -31,10 +31,7 @@ class Spree::Supplier < Spree::Base
   has_attached_file :store_logo, :styles => { :default => "80x80>"}, :default_url => "/assets/leema-seller-logo.jpg"
   validates_attachment_content_type :store_logo, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :store_logo, :less_than => 2.megabytes
-
-  has_attached_file :shipping_image, :styles => { :default => "300x300>" }, :default_url => "/assets/leema-seller-shipping-image.jpg"
-  validates_attachment_content_type :shipping_image, :content_type => /\Aimage\/.*\Z/
-
+  
   validates :commission_flat_rate,   presence: true
   validates :commission_percentage,  presence: true
   validates :email,                  presence: true, email: true, uniqueness: true
